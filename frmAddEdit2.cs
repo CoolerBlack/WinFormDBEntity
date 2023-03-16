@@ -13,13 +13,13 @@ namespace WinFormDBEntity
     public partial class frmAddEdit2 : Form
     {
         GarageEntities db;
-        public frmAddEdit2(Garage obj)
+        public frmAddEdit2(car obj)
         {
             InitializeComponent();
             db = new GarageEntities();
             if(obj == null)
             {
-
+                carBindingSource.DataSource = new car();
             }
         }
 

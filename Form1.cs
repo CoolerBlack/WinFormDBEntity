@@ -21,7 +21,7 @@ namespace WinFormDBEntity
         private void Form1_Load(object sender, EventArgs e)
         {
             db = new GarageEntities();
-            garageBindingSource = db.Garage.ToList();
+            carBindingSource.DataSource = db.cars.ToList();
         }
     }
 }
