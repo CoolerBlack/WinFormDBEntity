@@ -23,5 +23,38 @@ namespace WinFormDBEntity
             db = new GarageEntities();
             carBindingSource.DataSource = db.cars.ToList();
         }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            using(frmAddEdit2 frm = new frmAddEdit2(null))
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                    carBindingSource.DataSource = db.cars.ToList();
+            }
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (carBindingSource.Current == null)
+                return;
+            using (frmAddEdit2 frm = new frmAddEdit2(carBindingSource.Current as car))
+            {
+                if (frm.ShowDialog() == DialogResult.OK)
+                    carBindingSource.DataSource = db.cars.ToList();
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if(carBindingSource.Current != null)
+            {
+                if(MessageBox.Show("Czy chcesz usunąć ten rekord?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    db.cars.Remove(carBindingSource.Current as car);
+                    carBindingSource.RemoveCurrent();
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }

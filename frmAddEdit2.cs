@@ -20,6 +20,12 @@ namespace WinFormDBEntity
             if(obj == null)
             {
                 carBindingSource.DataSource = new car();
+                db.cars.Add(carBindingSource.Current as car);
+            }
+            else
+            {
+                carBindingSource.DataSource = obj;
+                db.cars.Attach(carBindingSource.Current as car);
             }
         }
 
@@ -30,7 +36,19 @@ namespace WinFormDBEntity
 
         private void frmAddEdit2_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            if(DialogResult == DialogResult.OK)
+            {
+                if (string.IsNullOrEmpty(txtColor.Text))
+                {
+                    MessageBox.Show("Proszę wprowadź kolor samochodu", "Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    txtColor.Focus();
+                    e.Cancel = true;
+                    return;
+                }
+                db.SaveChanges();
+                e.Cancel = false;
+            }
+            e.Cancel = false;
         }
     }
 }

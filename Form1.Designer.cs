@@ -33,11 +33,11 @@
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
-            this.carBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.makeDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.modelDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.yearDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.colorDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.carBindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.carBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -50,6 +50,7 @@
             this.btnDelete.TabIndex = 0;
             this.btnDelete.Text = "&Usuń";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
             // dataGridView1
             // 
@@ -76,6 +77,7 @@
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = "&Dodaj";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // btnEdit
             // 
@@ -85,10 +87,7 @@
             this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = "&Edytuj";
             this.btnEdit.UseVisualStyleBackColor = true;
-            // 
-            // carBindingSource
-            // 
-            this.carBindingSource.DataSource = typeof(WinFormDBEntity.car);
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
             // 
             // makeDataGridViewTextBoxColumn
             // 
@@ -113,6 +112,10 @@
             this.colorDataGridViewTextBoxColumn.DataPropertyName = "color";
             this.colorDataGridViewTextBoxColumn.HeaderText = "color";
             this.colorDataGridViewTextBoxColumn.Name = "colorDataGridViewTextBoxColumn";
+            // 
+            // carBindingSource
+            // 
+            this.carBindingSource.DataSource = typeof(WinFormDBEntity.car);
             // 
             // Form1
             // 
